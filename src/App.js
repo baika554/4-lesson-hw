@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import RegistrationForm from './registr';
+import UserDisplay from './realtime';
 
-function App() {
+const App = () => {
+  const [userData, setUserData] = useState({
+    fullName: '',
+    age: '',
+    email: '',
+    phoneNumber: ''
+  });
+
+  const handleRegister = (data) => {
+    setUserData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RegistrationForm onRegister={handleRegister} />
+      <UserDisplay user={userData} />
     </div>
   );
-}
+};
 
 export default App;
